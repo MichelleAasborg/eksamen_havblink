@@ -1,0 +1,642 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+  max-inline-size: 100%;
+  display: block;
+}
+
+h2 {
+  font-family: "playfair display", sans-serif;
+  font-size: 40px;
+  color: #3D495D;
+  padding-bottom: 20px;
+}
+
+p {
+  font-family: "worksans", sans-serif;
+  font-size: 23px;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* BASE STYLES */
+body {
+  background-color: #E1DCD7;
+  font-family: 'Inter', sans-serif;
+  padding-top: 60px;
+}
+
+/* NORMAL STYLES */
+.header {
+  background-color: #919978;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  max-width: 1200px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+.logo__img {
+  height: 30px;
+  display: block;
+}
+
+
+.nav__list {
+  display: flex;
+  column-gap: 40px;
+}
+
+
+.nav__link {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 15px;
+  transition: all 0.4s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  font-family: "work-sans", sans-serif;
+}
+
+
+
+
+/* DROPDOWN MENU STYLES */
+.nav__item {
+  position: relative; /* nødvendig for at absolut placere dropdown */
+}
+
+.nav__dropdown {
+  position: absolute;
+  top: 100%; /* Ikke +10px – nu ligger den direkte under linket */
+  left: 0;
+  background-color: #3D495D;
+  padding: 10px 0;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: none; /* skjult som standard */
+  z-index: 10;
+}
+
+.nav__dropdown li {
+  padding: 8px 20px;
+}
+
+.nav__dropdown li a {
+  color: #ffffff;
+  font-size: 14px;
+  display: block;
+  transition: background-color 0.2s ease;
+}
+
+.nav__dropdown li a:hover {
+  font-weight: bold;
+}
+
+/* HOVER TO SHOW DROPDOWN */
+.nav__item:hover .nav__dropdown {
+  display: block;
+}
+
+/* Skjul checkbox og menu (mobil) */
+.menu-checkbox {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Mobilvisning – under 650px */
+@media (max-width: 650px) {
+  .nav__list {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3D495D;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 10px 0;
+    color: #ffffff;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .menu-checkbox:checked + .menu-icon + .nav__list {
+    display: flex;
+  }
+
+  .nav__item {
+    text-align: center;
+  }
+
+  /* Dropdowns – vis som alm. tekst i mobil (du kan gøre dette mere avanceret senere) */
+  .nav__dropdown {
+    position: static;
+    display: none;
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .nav__item:hover .nav__dropdown {
+    display: none;
+  }
+
+  .nav__item:focus-within .nav__dropdown {
+    display: block;
+  }
+
+  .nav__dropdown li a {
+    padding-left: 20px;
+  }
+
+  .nav__link {
+    color: #ffffff;
+  }
+}
+
+.hero {
+  background-image: url('images/herobillede.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* fylder hele skærmen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* mørk overlay for læsbarhed */
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  z-index: 1;
+  color: white;
+}
+
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  font-family: "bebasNeue", sans-serif;
+  line-height: 1.5;
+}
+
+.hero-content button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #ff6f61;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.overlay h1 {
+  position: absolute;
+  top: 45%;
+  left: 60px; /* eller den afstand du ønsker fra venstre */
+  transform: translateY(-50%);
+  font-family: "bebasNeue", sans-serif;
+  color: #ffffff;
+  font-size: 80px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+}
+
+.highlight {
+  color: #5aa793;
+  font-weight: bold;
+}
+
+.overlay a {
+  position: absolute;
+  top: 75%;
+  left: 60px;
+  background-color: #A66161;
+  padding: 15px 20px;
+  color: #ffffff;
+  font-family: "worksans", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content,
+  .hero-image {
+    flex: none;
+    width: 100%;
+  }
+
+  .hero-content h1 {
+    order: 1;
+    font-size: 2rem;
+  }
+
+    .hero-image img {
+    width: 80%;
+    margin-top: 1rem;
+  }
+
+  .hero-image {
+    order: 2;
+  }
+
+
+  .hero-content button {
+    order: 3;
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    order: 3;
+  }
+}
+
+/* "Fitty Fitty" - Sektion 1*/
+.fittyfitty1{
+    display: flex;
+    margin: 0 100px;
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.fittyfitty1 div, .fittyfitty1 section{
+    width:50%;
+    background-color: #D7D7D7;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Lodret centrering */
+    align-items: center;
+}
+
+.fittyfitty1 div img {
+    width:100%;
+}
+
+.fittyfitty1 h2{
+    font-family: "playfair display", sans-serif;
+    color: #3D495D;
+}
+
+.fittyfitty1 a {
+    background-color: #A66161;
+    padding: 15px 20px;
+    color: #ffffff;
+    font-family: "worksans", sans-serif;
+    margin-top: 40px;
+}
+
+#vine img{
+    width:80%;
+}
+
+.bigletter {
+    font-size: 100px;
+    font-family: "playfair display", sans-serif;
+    color: #3D495D;
+}
+
+/* "Fitty Fitty" - Sektion 2*/
+.fittyfitty2{
+    display: flex;
+    margin: 0 100px;
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.1);
+
+}
+
+.fittyfitty2 div, .fittyfitty2 section{
+    width:50%;
+    background-color: #728471;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Lodret centrering */
+    align-items: center;
+
+}
+
+.fittyfitty2 div img {
+    width:100%;
+}
+
+.fittyfitty2 h2{
+    font-family: "playfair display", sans-serif;
+    color: #e8ebf0;
+    margin-bottom: 20px;
+}
+
+.fittyfitty2 a {
+    background-color: #A66161;
+    padding: 15px 20px;
+    color: #ffffff;
+    font-family: "worksans", sans-serif;
+    margin-top: 40px; 
+}
+
+.fittyfitty2 a:hover {
+    background-color: #566330;
+}
+
+/* "Fitty Fitty" - Sektion 3*/
+
+.fittyfitty3{
+    display: flex;
+    margin:  0 100px;
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.fittyfitty3 div, .fittyfitty3 section{
+    width:50%;
+    background-color: #D7D7D7;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Lodret centrering */
+    align-items: center;
+
+}
+
+#vine img {
+    width:100%;
+}
+
+.fittyfitty3 h2{
+    font-family: "playfair display", sans-serif;
+    color: #3D495D;
+    margin-bottom: 20px;
+}
+
+.fittyfitty3 a {
+    background-color: #A66161;
+    padding: 15px 20px;
+    color: #ffffff;
+    font-family: "worksans", sans-serif;
+    margin-top: 40px;    
+}
+
+.fittyfitty3 p {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+
+/* "Fitty Fitty" - Sektion 4*/
+
+.fittyfitty4{
+    display: flex;
+    margin:  0 100px;
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.fittyfitty4 div, .fittyfitty4 section{
+    width:50%;
+    background-color: #B2AD9F;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Lodret centrering */
+    align-items: center;
+
+}
+
+.fittyfitty4 div img {
+    width:100%;
+}
+
+.fittyfitty4 h2{
+    font-family: "playfair display", sans-serif;
+    color: #3D495D;
+    margin-bottom: 20px;
+}
+
+.fittyfitty4 a {
+    background-color: #A66161;
+    padding: 15px 20px;
+    color: #ffffff;
+    font-family: "worksans", sans-serif;
+    margin-top: 40px;
+    
+}
+
+.fittyfitty4 p {
+    font-size: 20px;
+}
+
+/* RESPONSIVE REGLER:*/
+/* Særregler for mobiler: */
+@media screen and (max-width:768px){
+
+    .fittyfitty1, .fittyfitty2, .fittyfitty3, .fittyfitty4{
+        flex-direction:column;
+        margin: 0;
+        
+    }
+    
+    .fittyfitty1 div, .fittyfitty1 section,
+    .fittyfitty2 div, .fittyfitty2 section,
+    .fittyfitty3 div, .fittyfitty3 section,
+    .fittyfitty4 div, .fittyfitty4 section { 
+        width:100%;
+        margin:0px; /* Fordi der ellers kommer en horisontal scrollbar. */
+    }
+
+    .fittyfitty1 p, .fittyfitty2 p, .fittyfitty3 p, .fittyfitty4 p {
+        display: none;
+    } 
+}
+
+/* Anmeldelser */
+
+.review-scroll {
+  background: #E1DCD7;
+  padding: 60px 20px;
+  text-align: center;
+  margin: 0 100px;
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.review-scroll h2 {
+  font-family: "Playfair Display", serif;
+  color: #a09252;
+  margin-bottom: 30px;
+}
+
+.review-card h3 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.review-card {
+  flex: 0 0 30%;
+  scroll-snap-align: start;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  min-width: 300px;
+}
+
+.review-card p {
+  color: #333;
+  font-size: 18px;
+}
+
+.review-card h4 {
+  margin-top: 15px;
+  color: #A66161;
+  font-weight: normal;
+}
+
+@media screen and (max-width:768px){
+
+    .review-scroll {
+        margin: 0;
+    }
+
+
+    
+}
+
+/* footer */
+
+.footer {
+  background-color: #919978;
+  color: #000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.footer-logo img {
+  margin-top: 50px;
+  height: 30px;
+}
+
+.footer-kolonner {
+  display: flex;
+  gap: 200px;
+  justify-content: center;
+}
+
+.footer-kolonne h3 {
+  font-weight: bold;
+  font-family: "Work Sans", sans-serif;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.footer-kolonne p {
+    font-size: 15px;
+    
+}
+
+.social-icons img {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  width: 30px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+    
+  .footer-kolonner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+
+  .footer-kolonne {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+
+

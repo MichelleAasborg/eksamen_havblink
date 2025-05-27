@@ -1,0 +1,912 @@
+* {
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "work sans";
+    overflow-x: hidden;
+    background-color: #E1DCD7;
+}
+
+h2 {
+  font-family: "playfair display", sans-serif;
+  font-size: 40px;
+  color: #3D495D;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+img {
+  max-inline-size: 100%;
+  display: block;
+}
+
+h3 {
+   font-family: "work sans";
+   font-size: 30px;
+   color: #7D713C;
+   margin-bottom: 20px;
+   margin-top: 20px;
+}
+
+p {
+  font-family: "worksans", sans-serif;
+  font-size: 15px;
+  white-space: pre-wrap;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/*Generel @media*/
+
+@media screen and (max-width: 768px){
+h3 {
+  font-size: 20px;  
+}
+
+p {
+   font-size: 15px; 
+}
+
+h4 {
+    font-size: 16px;
+}
+}
+
+/* NORMAL STYLES */
+nav {
+    max-width: 1900px; /* max bredde - Når man kommer forbi denne vil den ikke længere være 100% af visningen*/
+    height: 80px; /* Angiver højden på navigationen*/
+    margin: 0 auto; /* Gør at vores navigation bliver centreret når den kommer forbi de 1100px*/
+    padding: 0 2em;
+    background-color: #919978;
+    display: flex; /*for at styre logoet og mine links*/
+    justify-content: space-between; /*Dette styre luften mellem mine 2 elementer (logo og links)*/
+    align-items: center; /*For at mine elementer er centreret vertikalt*/
+}
+
+#logo {
+    height: 40%;
+    padding-left: 20px;
+}
+
+#nav-links {
+    list-style: none;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+#nav-links li a {
+    display: block;
+    color: black;
+    padding: 0.5em 1em;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+#nav-links li {
+    position: relative;
+}
+
+#nav-links a.active {
+  border-bottom: 2px solid #000000;
+  padding-bottom: 4px;
+}
+
+.dropdown {
+    list-style: none;
+}
+
+#nav-links li:hover .dropdown {
+  display: block;
+}
+
+#toggle-nav,
+#toggle-nav-btn-open,
+#toggle-nav-btn-close {
+    display: none;
+}
+
+#toggle-nav-btn-open,
+#toggle-nav-btn-close {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 1);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%; /* Ikke +10px – nu ligger den direkte under linket */
+  left: 0;
+  background-color: #3D495D;
+  padding: 10px 0;
+  min-width: 180px;
+  display: none; /* skjult som standard */
+  z-index: 2000;
+}
+
+ul.dropdown a {
+  color: #ffffff !important;
+}
+
+#nav-links li a:hover .dropdown {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  #nav-links {
+    position: absolute;
+    height: calc(100% - 80px);
+    opacity: 0;
+    width: 50%;
+    top: 80px;
+    left: -100%;
+    background-color: #919978;
+    z-index: 3000;
+    display: block;
+    padding-left: 20px;
+  }
+
+  #toggle-nav:checked ~ #nav-links {
+    opacity: 1;
+    left: 0;
+  }
+
+  #toggle-nav-btn-open {
+    display: inline-block;
+  }
+
+  #toggle-nav:checked ~ label #toggle-nav-btn-open {
+    display: none;
+  }
+
+  #toggle-nav:checked ~ label #toggle-nav-btn-close {
+    display: inline-block;
+  }
+
+ #nav-links:hover .dropdown {
+    display: none;
+  }
+
+#nav-links li:hover .dropdown {
+  display: none;
+}
+
+#nav-links li:focus-within .dropdown {
+    display: block;
+  }
+
+.dropdown {
+    position: static;
+    background: #919978;
+    padding: 0;
+  }
+
+#nav-links a.active {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+ul.dropdown a {
+  padding-left: 40px !important;
+  color: black !important;
+}
+
+}
+
+@media screen and (max-width: 600px) {
+  #nav-links {
+    width: 100%;
+  }
+}
+
+/*Velkommen på siden */
+
+.welcome {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.overlay-image-center {
+  position: absolute;
+  bottom: 0; /* lægger sig i bunden */
+  left: 50%;
+  transform: translateX(-50%); /* ryk tilbage med halvdelen for centreret effekt */
+  background: #E1DCD7;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 50%;
+}
+
+.overlay-image-center h5 {
+    font-size: 20px;
+    color: #7D713C;
+    margin-top: 60px;
+    font-family: "work sans";
+}
+
+@media (max-width: 768px) {
+  .overlay-image-center {
+    display: flex; /* ✅ Gør det til en flex container igen */
+    justify-content: center; /* ✅ Centrer vandret */
+    align-items: center;     /* ✅ Centrer lodret */
+    flex-direction: row;     /* ✅ Sørg for tekst ikke står i kolonne */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* ✅ Fyld hele hero-billedets højde */
+    transform: none; /* ✅ Fjern tidligere transform */
+    background: none;
+    padding: 0 1rem;
+    z-index: 99;
+  }
+
+  .overlay-image-center h5 {
+    display: none;
+  }
+
+  .overlay-image-center h2 {
+    color: #ffffff;
+    font-size: 28px;
+    white-space: nowrap; /* valgfrit */
+    z-index: 100;
+  }
+}
+
+/* Introduktion */
+
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.info-top {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.info-top p {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+
+@media screen and (max-width: 768px) {
+    .info-top {
+        padding: 1rem;
+    }
+}
+
+.info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* <-- Centrer alle kort i rækken */
+  gap: 2rem;
+  padding: 2rem;
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto; /* <-- Centrer selve grid'en */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* <-- Centrerer indhold inde i hvert kort */
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  max-width: 300px; /* valgfrit, for at sikre ens bredde */
+}
+
+
+.ikoner {
+  width: 50px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+.section-divider {
+  border: none;
+  border-top: 3px solid #c0b9b9;
+  margin: 4rem auto;
+  width: 90%;
+}
+
+.vinartikel {
+  max-width: 900px;
+  margin: 0 auto;
+
+}
+
+.vinartikel p, .vinartikel h3, .vinartikel h4{
+    max-width: 700px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.vinartikel h4 {
+    margin-bottom: 10px;
+    font-family: "work sans";
+    font-weight: 600;
+}
+
+.vinartikel a {
+   display: inline-block;
+   margin-top: 30px; 
+   margin-left: 50px; 
+   margin-bottom: 50px;
+   background: #A66161;
+   color: #ffffff;
+   padding: 15px;
+   font-family: "work sans";
+   font-size: 15px;
+}
+
+.vinartikel img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.vinartikel ul li {
+  margin-left: 50px;
+  line-height: 1.5;
+  font-family: "work sans";
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .vinartikel ul li {
+    font-size: 14px;
+  }
+}
+
+.løfte {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.info-cards .card-special {
+    background: #EAEAEA;
+    border-radius: 10px;
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card.hover:hover img, .card.hover:hover p {
+  transform: scale(1.05);
+}
+
+section .info-top.laes_mere h3 {
+  margin: 0;
+}
+
+.footer {
+  background-color: #919978;
+  color: #000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.footer-logo img {
+  margin-top: 50px;
+  height: 30px;
+}
+
+.footer-kolonner {
+  display: flex;
+  gap: 150px;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.footer-kolonne h3 {
+  font-weight: bold;
+  font-family: "Work Sans", sans-serif;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #000;
+}
+
+.footer-kolonne p {
+    font-size: 15px;
+    
+}
+
+.social-icons img {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  height: 25px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+    
+  .footer-kolonner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+
+  .footer-kolonne {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+}
+
+.oekologi {
+  position: relative;
+  background-image: url("images/oekologi.png"); /* din store Ø-mærke-baggrund */
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;
+}
+
+@media (max-width: 768px) {
+  .oekologi {
+    background-image: none;
+  }
+}
+
+
+.fittyfitty2 {
+  max-width: 80%;               /* Begrænser bredden til 80% af skærmen */
+  display: flex;                /* Bruger flexbox til layout */
+  margin: 0 auto;               /* Centrerer containeren vandret */
+  flex-direction: row;          /* Elementer placeres vandret */
+  align-items: center;          /* Vertikal centrering af børn */
+  flex-wrap: wrap;              /* Tillader linjeskift, hvis der ikke er plads */
+  margin-top: 100px;             /* Giver luft over sektionen */
+  margin-bottom: 150px;
+}
+
+/* Styler <div> med billedet inde i .fittyfitty2 */
+.fittyfitty2 div {
+  height: auto;                 /* Automatisk højde efter indhold */
+  width: 50%;                   /* Fylder halvdelen af bredden */
+  text-align: center;           /* Centrerer indholdet horisontalt */
+}
+
+/* Styler <section> med teksten inde i .fittyfitty2 */
+.fittyfitty2 section {
+  width: 50%;                   /* Fylder halvdelen af bredden */
+  display: flex;                /* Flex layout inde i sektionen */
+  flex-direction: column;       /* Indhold stables vertikalt */
+  padding-right: 30px;          /* Luft til højre */
+}
+
+
+/* Giver afstand før og efter prisen */
+.pris {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Styling af "Læs mere"-linket */
+.fittyfitty2 a {
+  background-color: #A66161;    /* Baggrundsfarve */
+  display: inline-block;        /* Gør linket til en blok med højde/bredde */
+  align-self: flex-start;       /* Justér placering i venstre side af flexcontainer */
+  padding: 10px;                /* Indvendig afstand */
+  font-family: "work sans";     /* Skrifttype */
+  color: white;                 /* Tekstfarve */
+}
+
+/* Styling af beskrivelsen med kursiv */
+.kursiv {
+  margin-bottom: 10px;          /* Luft under beskrivelsen */
+  font-style: italic;           /* Kursiv tekst */
+}
+
+
+/* Wrapper til bedømmelse og stjerner */
+.rating {
+  display: flex;                /* Flex layout for at placere tal og stjerner side om side */
+  align-items: center;          /* Vertikal centrering */
+  gap: 5px;                     /* Luft mellem tal og stjerner */
+  margin-bottom: 20px;          /* Luft under rating-sektionen */
+}
+
+/* Styling af bedømmelsestal (fx 4,3) */
+.rating p {
+  font-size: 30px;              /* Stor skriftstørrelse */
+  font-weight: bold;           /* Fed tekst */
+}
+
+div.stars {
+  padding: 0;               /* Fjern unødvendig padding */
+  width: max-content;       /* Gør elementet så bredt som dets indhold */
+  display: inline-block;    /* Sørger for, at det opfører sig korrekt */
+}
+
+
+/* --------- RESPONSIVE DESIGN --------- */
+/* For skærme op til 768px bredde (mobiler/tablets): */
+@media screen and (max-width: 768px) {
+
+  .fittyfitty2 {
+    max-width: 100%;            /* Udnyt hele bredden */
+    flex-direction: column;     /* Stabl elementer vertikalt i stedet for side om side */
+  }
+
+  .fittyfitty2 div,
+  .fittyfitty2 section {
+    width: 100%;                /* Fyld hele bredden på små skærme */
+    margin: 0px;                /* Fjerner margin for at undgå scroll */
+    text-align: center;         /* Centrerer tekst og billeder */
+    padding-right: 0;
+    padding: 20px;
+  }
+
+  .fittyfitty2 div img {
+    width: 30%;                 /* Gør billedet mindre på små skærme */
+  }
+
+  .fittyfitty2 a {
+    display: block;             /* Gør linket til blok-element */
+    margin: 0 auto;             /* Centrerer linket horisontalt */
+  }
+
+  div.stars {
+    padding: 0; /*Fjerner den indvendige afstand (padding)*/
+    width: max-content; /*Sørger for, at bredden automatisk passer til det indhold*/
+    display: inline-block; /*ændres fra block element så den hodler sin egen bredde/højde*/
+  }
+
+  .rating {
+    justify-content: center; /*Centrere child elements vandret*/
+  }
+}
+
+.allevine-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-weight: 300;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.allevine-menu a {
+  text-decoration: none;
+  color: #000000;
+  border-bottom: 1px solid transparent;
+}
+
+.allevine-menu a.active,
+.allevine-menu a:hover {
+  border-color: #000000;
+}
+
+.vin-presentation {
+  max-width: 100%;               
+  display: flex;                /* Bruger flexbox til layout */
+  margin: 0 auto;               /* Centrerer containeren vandret */
+  flex-direction: row;          /* Elementer placeres vandret */
+  align-items: center;          /* Vertikal centrering af børn */
+  flex-wrap: wrap;              /* Tillader linjeskift, hvis der ikke er plads */
+  margin-top: 100px;             /* Giver luft over sektionen */
+}
+
+
+/* Styler <div> med billedet inde i .fittyfitty2 */
+.vin-presentation div {
+  height: auto;                 /* Automatisk højde efter indhold */
+  width: 50%;                   /* Fylder halvdelen af bredden */
+  text-align: center;           /* Centrerer indholdet horisontalt */
+}
+
+/* Styler <section> med teksten inde i .fittyfitty2 */
+.vin-presentation section {
+  width: 50%;                   /* Fylder halvdelen af bredden */
+  display: flex;                /* Flex layout inde i sektionen */
+  flex-direction: column;       /* Indhold stables vertikalt */
+  
+}
+
+/* Styling af "Læs mere"-linket */
+.vin-presentation a {
+  background-color: #A66161;    /* Baggrundsfarve */
+  display: inline-block;        /* Gør linket til en blok med højde/bredde */
+  align-self: flex-start;       /* Justér placering i venstre side af flexcontainer */
+  padding: 10px;                /* Indvendig afstand */
+  font-family: "work sans";     /* Skrifttype */
+  color: white;                 /* Tekstfarve */
+}
+
+/* Styling af beskrivelsen med kursiv */
+.kursiv {
+  margin-bottom: 10px;          /* Luft under beskrivelsen */
+  font-style: italic;           /* Kursiv tekst */
+}
+
+
+/* Wrapper til bedømmelse og stjerner */
+.rating {
+  display: flex;                /* Flex layout for at placere tal og stjerner side om side */
+  align-items: center;          /* Vertikal centrering */
+  gap: 5px;                     /* Luft mellem tal og stjerner */
+  margin-bottom: 20px;          /* Luft under rating-sektionen */
+}
+
+/* Styling af bedømmelsestal (fx 4,3) */
+.rating p {
+  font-size: 30px;              /* Stor skriftstørrelse */
+  font-weight: bold;           /* Fed tekst */
+}
+
+div.stars {
+  padding: 0;               /* Fjern unødvendig padding */
+  width: max-content;       /* Gør elementet så bredt som dets indhold */
+  display: inline-block;    /* Sørger for, at det opfører sig korrekt */
+}
+
+div.vin-fremhaev {
+  text-align: left;
+  width: 80%;
+}
+
+.forslag-til-retter a {
+  background: none;
+  padding: 0;
+  color: #000;
+  font-family: "work sans"; 
+  font-size: 15px;
+  font-weight: bold;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#overskrift {
+  margin-bottom: 20px;
+}
+
+.vin-presentation section a {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+
+  .vin-presentation {
+    max-width: 100%;            /* Udnyt hele bredden */
+    flex-direction: column;     /* Stabl elementer vertikalt i stedet for side om side */
+    margin-top: 0;
+  }
+
+  .vin-presentation div,
+  .vin-presentation section {
+    width: 100%;                /* Fyld hele bredden på små skærme */
+    margin: 0px;                /* Fjerner margin for at undgå scroll */
+    text-align: center;         /* Centrerer tekst og billeder */
+    padding-right: 0;
+    padding: 20px;
+  }
+
+  .vin-presentation div img {
+    width: 80%;                 /* Gør billedet mindre på små skærme */
+  }
+
+  .vin-presentation a {
+    display: block;             /* Gør linket til blok-element */
+    margin: 0 auto;             /* Centrerer linket horisontalt */
+  }
+
+  div.stars {
+    padding: 0; /*Fjerner den indvendige afstand (padding)*/
+    width: max-content; /*Sørger for, at bredden automatisk passer til det indhold*/
+    display: inline-block; /*ændres fra block element så den hodler sin egen bredde/højde*/
+  }
+
+  .rating {
+    justify-content: center; /*Centrere child elements vandret*/
+  }
+}
+
+/* Anmeldelser */
+
+.anmeldelser {
+  max-width: 900px;               
+  display: flex;                /* Bruger flexbox til layout */
+  margin: 0 auto;               /* Centrerer containeren vandret */
+  flex-direction: row;          /* Elementer placeres vandret */
+  flex-wrap: wrap;              /* Tillader linjeskift, hvis der ikke er plads */
+  margin-bottom: 150px; 
+  margin-top: 50px; 
+}
+
+div.review {
+  border: #000000 1px solid;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.anmeldelser h3 {
+  text-align: center;
+  font-family: "work sans";
+  font-size: 30px;
+  color: #8D8100;
+  margin-top: 20px;
+}
+
+div.rating-badge {
+  background-color: #BBC2CE;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.anmeldelser a {
+  background-color: #A66161;
+  color: white;
+  padding: 10px;
+  font-family: "work sans";
+  font-size: 15px;
+}
+
+@media screen and (max-width: 768px) {
+
+  .anmeldelser {
+    margin: 30px;
+  }
+
+   
+}
+
+.oplevelser_havblink {
+    display: flex;
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    padding: 30px;
+    border: #000000 1px solid; /* Tilføjer en sort kant rundt om hele sektionen */
+    width: 80%;
+    margin: 0 auto; /* Centrerer sektionen horisontalt */
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+.oplevelser_havblink div{
+    width:40%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Lodret centrering */
+}
+
+.oplevelser_havblink section{
+    width:60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Lodret centrering */
+    align-items: flex-start;
+}
+
+.oplevelser_havblink section p {
+    max-width: 600px;
+    font-size: 16px;
+}
+
+.oplevelser_havblink div img {
+    width:100%;
+}
+
+.oplevelser_havblink h2{
+    font-family: "playfair display", sans-serif;
+    color: #3D495D;
+}
+
+.oplevelser_havblink a {
+    background-color: #A66161;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-family: "worksans", sans-serif;
+    display: inline-block; /* Gør linket til en blok med højde/bredde */
+    font-size: 10px; /* Justerer skriftstørrelsen */
+}
+
+/* RESPONSIVE REGLER:*/
+/* Særregler for mobiler: */
+@media screen and (max-width:768px){
+
+  .oplevelser_havblink {
+    flex-direction: column;   /* Elementer stables lodret */
+    width: 80%;              /* Fylder hele bredden */
+    padding: 20px;            /* Evt. mindre padding på mobil */
+  }
+    
+  .oplevelser_havblink div,
+  .oplevelser_havblink section {
+    width: 100%;              /* Fylder hele bredden hver især */
+    text-align: center;       /* Centrerer tekst og billede (valgfrit) */
+    align-items: center;      /* Centrerer indhold i section (flexbox) */
+  }
+
+  .oplevelser_havblink section {
+    order: 2; /* Gør at teksten kommer under billedet */
+  }
+
+  .oplevelser_havblink div {
+    order: 1;
+  }
+
+  .oplevelser_havblink a {
+    margin-top: 20px;
+  }
+
+  .oplevelser_havblink div img {
+    width: 80%;               /* Gør billedet mindre på mobil (juster efter behov) */
+  }
+}
+
+/* Oplevelser vinsmagning */
+
+article.vinartikel h4 {
+  margin-top: 30px;
+}
+
+#datoer li {
+  list-style: none;
+}
+
+#farveroed {
+  color: #FF0000;
+}
+
+#farvegul {
+  color: #878147;
+}
+
+#farvegroen {
+  color: #489D48;
+}
+
+.vinartikel.vinsmagning ul li {
+  font-size: 15px;
+}
+
+.wrapper .info-top p {
+  font-size: 18px;
+}
+
+

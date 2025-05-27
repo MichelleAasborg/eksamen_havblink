@@ -1,0 +1,583 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-family: "playfair display", sans-serif;
+  font-size: 40px;
+  color: #3D495D;
+  padding-bottom: 20px;
+}
+
+p {
+  font-family: "worksans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+span {
+  color: #354166;
+}
+
+.container {
+  max-width: 1300px;
+  margin-inline: auto;
+  padding: 0 32px;  
+}
+
+.container1 {
+  max-width: 1300px;
+  margin-inline: auto;
+  padding: 0 32px;  
+}
+
+.btn {
+  background: #A66161;
+  color: #ffffff;
+  padding: 8px 32px;
+  border: 2px solid #646464;
+  display: inline-block;
+  font-weight: 500;
+  transition: all 300ms ease;
+}
+
+.btn:hover {
+  background: #8B4C4C;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn.outlined {
+  color: black;
+  background: #e0ece2;
+}
+
+.btn.outlined:hover {
+  background: #8B4C4C;
+  color: #ffffff;
+}
+
+img {
+  width: 100%;
+  max-inline-size: 100%;
+  display: block;
+}
+
+h1 {
+  font-size: 100px;
+  line-height: 100%;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin: 16px 0;
+  background: linear-gradient(90deg, #27502d 20%, #647562 60%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  font-family: "bebas Neue", sans-serif;
+}
+
+p {
+  font-size: 16px;
+  line-height: 160%;
+
+  font-family: "worksans", sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+  .btn:hover {
+    background: #A66161;
+    color: #ffffff;
+    transform: none;
+}
+}
+  
+
+
+/* BASE STYLES */
+body {
+  background-color: #E1DCD7;
+  font-family: 'Inter', sans-serif;
+  margin-top: 80px;
+}
+
+/* NORMAL STYLES */
+header {
+  background-color: #909680;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo__img {
+  height: 30px;
+  display: block;
+}
+
+/* NORMAL STYLES */
+nav {
+    position: fixed;
+    width: 100%;
+    height: 80px; /* Angiver højden på navigationen*/
+    margin: 0 auto; /* Gør at vores navigation bliver centreret når den kommer forbi de 1100px*/
+    padding: 0 2em;
+    background-color: #919978;
+    display: flex; /*for at styre logoet og mine links*/
+    justify-content: space-between; /*Dette styre luften mellem mine 2 elementer (logo og links)*/
+    align-items: center; /*For at mine elementer er centreret vertikalt*/
+    z-index: 1000;
+    top: 0;
+    left: 0;
+
+}
+
+#logo {
+    height: 40%;
+    padding-left: 20px;
+}
+
+#nav-links {
+    list-style: none;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+#nav-links li a {
+    display: block;
+    color: black;
+    padding: 0.5em 1em;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+#nav-links li {
+    position: relative;
+}
+
+#nav-links a.active {
+  border-bottom: 2px solid #000000;
+  padding-bottom: 4px;
+}
+
+.dropdown {
+    list-style: none;
+}
+
+#nav-links li:hover .dropdown {
+  display: block;
+}
+
+#toggle-nav,
+#toggle-nav-btn-open,
+#toggle-nav-btn-close {
+    display: none;
+}
+
+#toggle-nav-btn-open,
+#toggle-nav-btn-close {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 1);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%; /* Ikke +10px – nu ligger den direkte under linket */
+  left: 0;
+  background-color: #3D495D;
+  padding: 10px 0;
+  min-width: 180px;
+  display: none; /* skjult som standard */
+  z-index: 2000;
+}
+
+ul.dropdown a {
+  color: #ffffff !important;
+}
+
+#nav-links li a:hover .dropdown {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  #nav-links {
+    position: absolute;
+    height: calc(100% - 80px);
+    opacity: 0;
+    width: 50%;
+    top: 80px;
+    left: -100%;
+    background-color: #919978;
+    z-index: 2000;
+    display: block;
+    padding-left: 20px;
+  }
+
+  #toggle-nav:checked ~ #nav-links {
+    opacity: 1;
+    left: 0;
+  }
+
+  #toggle-nav-btn-open {
+    display: inline-block;
+  }
+
+  #toggle-nav:checked ~ label #toggle-nav-btn-open {
+    display: none;
+  }
+
+  #toggle-nav:checked ~ label #toggle-nav-btn-close {
+    display: inline-block;
+  }
+
+ #nav-links:hover .dropdown {
+    display: none;
+  }
+
+#nav-links li:hover .dropdown {
+  display: none;
+}
+
+#nav-links li:focus-within .dropdown {
+    display: block;
+  }
+
+.dropdown {
+    position: static;
+    background: #919978;
+    padding: 0;
+  }
+
+#nav-links a.active {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+ul.dropdown a {
+  padding-left: 40px !important;
+  color: black !important;
+}
+
+}
+
+@media screen and (max-width: 600px) {
+  #nav-links {
+    width: 100%;
+  }
+}
+
+
+/* Hero section */
+
+section.hero {
+  display: flex;
+  align-items: center;
+  min-height: 600px;
+  position: relative;
+}
+
+.buttons {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+section.hero .left {
+  width: 50%;
+}
+
+section.hero .right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.hero .right img {
+  height: 600px;
+  object-fit: cover;
+}
+
+section.hero .bg-color {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #27502d;
+  right: 0;
+  top: 120px;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(115px);
+}
+
+/* Regler gældende for mobilversion */
+
+.image-section_mobil {
+  display: none;
+  position: relative;
+  z-index: 0;
+}
+
+/* Responsive regler for hero section */
+
+@media screen and (max-width: 768px) {
+
+.image-section_mobil {
+  display: block;
+  height: 100vh;
+  z-index: 0;
+}
+
+  .image-section_mobil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Billedet fylder hele sektionen og beskæres pænt */
+    display: block;
+  }
+
+.container {
+    display: none;
+  }
+
+  .overlay-text1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    z-index: 1;
+    width: 100%;
+  }
+
+   .overlay-text1 img {
+    display: block;
+    margin: 1rem auto; /* centrering horisontalt */
+    max-width: 80%; /* eller en fast bredde fx 250px */
+    height: auto;
+    z-index: 2;
+  }
+
+.buttons_ny {
+    display: flex;
+    justify-content: center;
+  }
+
+  .overlay-text1 h1 {
+    font-size: 50px;
+    margin-top: 50px;
+    color: rgb(202, 223, 182);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  #nav-links {
+    z-index: 10;
+  }
+}
+
+/*section 2*/
+
+.hero1 {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero1 img {
+  width: 100%;
+  display: block;
+}
+
+.right1 {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  color: white;
+  max-width: 60%;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.right1 h1 {
+  font-size: 80px;
+}
+
+.right1 .sub-heading1 {
+  max-width: 500px;
+  background-color: #647562;
+  background-color: rgba(0, 0, 0, 0.6); /* Sort med 60% gennemsigtighed */
+  padding: 20px;
+}
+
+.button {
+  background-color: #c86f77; /* Rosa knap */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.image-section_mobil2 {
+  display: none;
+  
+}
+
+@media screen and (max-width: 768px) {
+.image-section_mobil2 {
+  display: block;
+  position: relative;
+}
+
+ .image-section_mobil2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Billedet fylder hele sektionen og beskæres pænt */
+    display: block;
+  }
+
+  .container1 {
+    display: none;
+  }
+
+  .overlay-text2 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    z-index: 1;
+    width: 100%;
+  }
+
+.buttons_ny {
+    display: flex;
+    justify-content: center;
+  }
+
+  .overlay-text2 h1 {
+    font-size: 50px;
+    margin-top: 50px;
+    color: rgb(176, 187, 166);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
+
+
+.right2 {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  color: rgb(255, 255, 255);
+  max-width: 60%;
+  padding: 20px;
+  padding-left: 50px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.right2 h1 {
+  font-size: 80px;
+  background: linear-gradient(90deg, #27502d 20%, #232f21 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.right2 p {
+  max-width: 500px;
+}
+
+.right2 .sub-heading1 {
+  max-width: 500px;
+  background-color: #647562;
+  background-color: rgba(0, 0, 0, 0.3); /* Sort med 60% gennemsigtighed */
+  padding: 20px;
+}
+
+/*footer styling*/
+
+.footer {
+  background-color: #919978;
+  color: #000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.footer-logo img {
+  margin-top: 50px;
+  height: 30px;
+}
+
+.footer-kolonner {
+  display: flex;
+  gap: 150px;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.footer-kolonne h3 {
+  font-weight: bold;
+  font-family: "Work Sans", sans-serif;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #000;
+}
+
+.footer-kolonne p {
+    font-size: 15px;
+    
+}
+
+.social-icons img {
+  margin-top: 20px;
+  width: auto;
+  height: 30px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+
+  .footer {
+    margin-top: 0;
+  }
+    
+  .footer-kolonner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+
+  .footer-kolonne {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+}
+
+
+
+

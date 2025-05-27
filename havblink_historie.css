@@ -1,0 +1,546 @@
+* {
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*Grundlæggende styling*/
+
+body {
+    font-family: "work sans";
+    overflow-x: hidden;
+    background-color: #E1DCD7;
+}
+
+h2 {
+  font-family: "playfair display", sans-serif;
+  font-size: 40px;
+  color: #3D495D;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+img {
+  max-inline-size: 100%;
+  display: block;
+}
+
+h3 {
+   font-family: "work sans";
+   font-size: 30px;
+   color: #3D495D;
+   margin-bottom: 10px;
+   margin-top: 20px;
+}
+
+h4 {
+    margin-top: 20px;
+}
+
+p {
+  font-family: "worksans", sans-serif;
+  font-size: 16px;
+  white-space: pre-wrap;
+}
+
+a {
+  text-decoration: none;
+}
+
+.section-divider {
+  border: none;
+  border-top: 3px solid #c0b9b9;
+  margin: 4rem auto;
+  width: 90%;
+}
+
+.btn {
+  background: #a66161;
+  color: #ffffff;
+  padding: 8px 32px;
+  border: 2px solid #646464;
+  display: inline-block;
+  font-weight: 500;
+  transition: all 300ms ease;
+  font-size: 10px;
+  margin-top: 30px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+}
+
+.btn:hover {
+  background: #8B4C4C;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/*Generel @media*/
+
+
+@media screen and (max-width: 768px){
+
+.btn:hover {
+    background: #a66161;
+    color: #ffffff;
+    transform: none;
+  }
+
+h3 {
+  font-size: 20px;  
+}
+
+p {
+   font-size: 15px; 
+}
+
+h4 {
+    font-size: 16px;
+}
+}
+
+/* Navigation */
+/* BASE STYLES */
+body {
+  background-color: #E1DCD7;
+  font-family: 'Inter', sans-serif;
+}
+
+/* NORMAL STYLES */
+header {
+  background-color: #909680;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo__img {
+  height: 30px;
+  display: block;
+}
+
+/* NORMAL STYLES */
+nav {
+    max-width: 1900px; /* max bredde - Når man kommer forbi denne vil den ikke længere være 100% af visningen*/
+    height: 80px; /* Angiver højden på navigationen*/
+    margin: 0 auto; /* Gør at vores navigation bliver centreret når den kommer forbi de 1100px*/
+    padding: 0 2em;
+    background-color: #919978;
+    display: flex; /*for at styre logoet og mine links*/
+    justify-content: space-between; /*Dette styre luften mellem mine 2 elementer (logo og links)*/
+    align-items: center; /*For at mine elementer er centreret vertikalt*/
+}
+
+#logo {
+    height: 40%;
+    padding-left: 20px;
+}
+
+#nav-links {
+    list-style: none;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+#nav-links li a {
+    display: block;
+    color: black;
+    padding: 0.5em 1em;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+#nav-links li {
+    position: relative;
+}
+
+#nav-links a.active {
+  border-bottom: 2px solid #000000;
+  padding-bottom: 4px;
+}
+
+.dropdown {
+    list-style: none;
+}
+
+#nav-links li:hover .dropdown {
+  display: block;
+}
+
+#toggle-nav,
+#toggle-nav-btn-open,
+#toggle-nav-btn-close {
+    display: none;
+}
+
+#toggle-nav-btn-open,
+#toggle-nav-btn-close {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 1);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%; /* Ikke +10px – nu ligger den direkte under linket */
+  left: 0;
+  background-color: #3D495D;
+  padding: 10px 0;
+  min-width: 180px;
+  display: none; /* skjult som standard */
+  z-index: 2000;
+}
+
+ul.dropdown a {
+  color: #ffffff !important;
+}
+
+#nav-links li a:hover .dropdown {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  #nav-links {
+    position: absolute;
+    height: calc(100% - 80px);
+    opacity: 0;
+    width: 50%;
+    top: 80px;
+    left: -100%;
+    background-color: #919978;
+    z-index: 2000;
+    display: block;
+    padding-left: 20px;
+  }
+
+  #toggle-nav:checked ~ #nav-links {
+    opacity: 1;
+    left: 0;
+  }
+
+  #toggle-nav-btn-open {
+    display: inline-block;
+  }
+
+  #toggle-nav:checked ~ label #toggle-nav-btn-open {
+    display: none;
+  }
+
+  #toggle-nav:checked ~ label #toggle-nav-btn-close {
+    display: inline-block;
+  }
+
+ #nav-links:hover .dropdown {
+    display: none;
+  }
+
+#nav-links li:hover .dropdown {
+  display: none;
+}
+
+#nav-links li:focus-within .dropdown {
+    display: block;
+  }
+
+.dropdown {
+    position: static;
+    background: #919978;
+    padding: 0;
+  }
+
+#nav-links a.active {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+ul.dropdown a {
+  padding-left: 40px !important;
+  color: black !important;
+}
+
+}
+
+@media screen and (max-width: 600px) {
+  #nav-links {
+    width: 100%;
+  }
+}
+
+
+/*Velkommen på siden - Hero section */
+
+.welcome {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.overlay-image-center {
+  position: absolute;
+  bottom: 0; /* lægger sig i bunden */
+  left: 50%;
+  transform: translateX(-50%); /* ryk tilbage med halvdelen for centreret effekt */
+  background: #E1DCD7;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 50%;
+}
+
+.overlay-image-center h5 {
+    font-size: 20px;
+    color: #7D713C;
+    margin-top: 60px;
+    font-family: "work sans";
+}
+
+@media (max-width: 768px) {
+  .overlay-image-center {
+    display: flex; /* Gør det til en flex container igen */
+    justify-content: center; /* Centrer vandret */
+    align-items: center;     /* Centrer lodret */
+    flex-direction: row;     /* Sørg for tekst ikke står i kolonne */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Fyld hele hero-billedets højde */
+    transform: none; /* Fjern tidligere transform */
+    background: none;
+    padding: 0 1rem;
+    z-index: 99;
+  }
+
+  .overlay-image-center h5 {
+    display: none;
+  }
+
+  .overlay-image-center h2 {
+    color: #ffffff;
+    font-size: 28px;
+    white-space: nowrap; /* valgfrit */
+    z-index: 100;
+  }
+}
+
+/* Her starter intro til siden med ikoner */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.info-top {
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 250px;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.card img.ikoner {
+  width: 60px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .info-top {
+        padding: 1rem;
+    }
+}
+
+/* Sektion med billede og artikel */
+
+.vinartikel {
+  max-width: 900px;
+  margin: 0 auto;
+
+}
+
+.vinartikel p, .vinartikel h3, .vinartikel h4{
+    max-width: 700px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.vinartikel h4 {
+    margin-bottom: 10px;
+    font-family: "work sans";
+    font-weight: 600;
+}
+
+.vinartikel a {
+   display: inline-block;
+   margin-top: 30px; 
+   margin-left: 50px; 
+   margin-bottom: 50px;
+   color: #ffffff;
+   padding: 15px;
+   font-family: "work sans";
+}
+
+.vinartikel img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.vinartikel ul li {
+  margin-left: 50px;
+  line-height: 1.5;
+  font-family: "work sans";
+  font-size: 18px;
+}
+
+/* Løfte - Vision, mission og værdier */
+
+.wrapper-ny {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.info-top-ny {
+    text-align: center;
+    padding: 20px;
+}
+
+.løfte {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.loefte {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card-special {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.1);
+    background: #EAEAEA;
+}
+
+/* Læs mere om */
+
+.laesom:hover img, .laesom:hover p {
+  transform: scale(1.05);
+}
+
+.info-top-ny h3 {
+  margin: 0;
+}
+
+.card-special.laesom {
+    background: none;
+    box-shadow: none;
+}
+
+
+
+@media (max-width: 768px) {
+  .loefte {
+    grid-template-columns: 1fr;         /* én kolonne */
+    justify-items: center;              /* centrér indholdet i kolonnen */
+  }
+
+.laesom:hover img, .laesom:hover p {
+  transform: none;
+}
+}
+
+/*footer styling*/
+
+.footer {
+  background-color: #919978;
+  color: #000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.footer-logo img {
+  margin-top: 50px;
+  height: 30px;
+}
+
+.footer-kolonner {
+  display: flex;
+  gap: 150px;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.footer-kolonne h3 {
+  font-weight: bold;
+  font-family: "Work Sans", sans-serif;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #000;
+}
+
+.footer-kolonne p {
+    font-size: 15px;
+    
+}
+
+.social-icons img {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  height: 25px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+    
+  .footer-kolonner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+
+  .footer-kolonne {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+}
